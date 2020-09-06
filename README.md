@@ -1,1 +1,1 @@
-개발환경: PyCharm
+Anaconda, PyCharm, PyQt5 사용
