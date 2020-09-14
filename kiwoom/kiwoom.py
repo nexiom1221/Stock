@@ -496,6 +496,16 @@ class Kiwoom(QAxWidget):
             elif value == '4':
                 print("3시30분 장 종료")
 
+                for code in self.portfolio_stock_dict.keys():
+                    self.dynamicCall("SetRealRemove(QString, QString)", self.portfolio_stock_dict[code]['스크린번호'], code)
+
+                QTest.qWait(5000)
+
+                self.file_delete()
+                self.calculator_fnc()
+
+                sys.exit()
+
         elif sRealType == "주식체결":
             a = self.dynamicCall("GetCommRealData(QString, int)", sCode,
                                  self.realType.REALTYPE[sRealType]['체결시간']) # 출력 HHMMSS
@@ -745,3 +755,7 @@ class Kiwoom(QAxWidget):
         
     def msg_slot(self, sScrNo, sRQName, sTrCode, msg):
         print("스크린: %s, 요청이름: %s, tr코드: %s --- %s" %(sScrNo, sRQName, sTrCode, msg))
+
+    def file_delete(self):
+        if os.path.isfile("files/condition_stock.txt"):
+            os.remove("files/condition_stock.txt")
