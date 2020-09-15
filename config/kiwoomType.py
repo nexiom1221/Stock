@@ -1,5 +1,4 @@
 class RealType(object):
-
     SENDTYPE = {
         '거래구분': {
             '지정가': '00',
