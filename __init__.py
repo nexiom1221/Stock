@@ -1,5 +1,6 @@
 import sys
 sys.path.append("C:/week1/")
+
 from kiwoom.kiwoom import *
 from PyQt5.QtWidgets import *
 
